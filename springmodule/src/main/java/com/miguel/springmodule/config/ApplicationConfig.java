@@ -10,4 +10,5 @@ public class ApplicationConfig {
     public DbConnectionProps dbConnectionProps(){
         return new DbConnectionProps();
     }
+
 }

@@ -1,13 +1,23 @@
 package com.miguel.springmodule.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties(prefix = "connection")
 public class DbConnectionProps {
+    @Value(value = "jdbc:mysql://localhost:3306/jbossdatabase")
     private String url;
+
+    @Value(value = "Miguel")
     private String username;
+
+    @Value(value = "qwerty")
     private String password;
+
+    @Value(value = "com.mysql.cj.jdbc.Driver")
     private String driverClassName;
+
+    @Value(value = "java:jboss/datasources/MySqlDS")
     private String jndiName;
 
     public DbConnectionProps() {

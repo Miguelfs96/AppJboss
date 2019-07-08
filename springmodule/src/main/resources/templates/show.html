@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!--suppress HtmlDeprecatedAttribute, CheckEmptyScriptTag -->
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Show</title>
+</head>
+<body>
+    <h3>Memeber</h3>
+    <table border = 1>
+        <tr>
+            <th>Id</th>
+            <th>Email</th>
+            <th>Nombre</th>
+            <th>Numero</th>
+        </tr>
+        <tr th:each = "m : ${members}">
+            <td th:text="${m.id}"/>
+            <td th:text="${m.email}"/>
+            <td th:text="${m.name}"/>
+            <td th:text="${m.number}"/>
+        </tr>
+    </table>
+</body>
+</html>

@@ -10,4 +10,8 @@ public interface MemberService {
 
     ArrayList mostrar();
 
+    void remove (long id);
+
+    Member edit (long id);
+
 }

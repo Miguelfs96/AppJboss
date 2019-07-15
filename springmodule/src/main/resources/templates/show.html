@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <!--suppress HtmlDeprecatedAttribute, CheckEmptyScriptTag -->
-<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml" lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Show</title>
+
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
 </head>
 <body>
-    <h3>Memeber</h3>
-    <table border = 1>
+    <h1>Memeber</h1>
+    <table style="color: #0f0f0f" >
         <tr>
             <th>Id</th>
             <th>Email</th>
@@ -19,6 +21,12 @@
             <td th:text="${m.email}"/>
             <td th:text="${m.name}"/>
             <td th:text="${m.number}"/>
+            <td>
+                <div th:with="remove=@{/remove(id=${m.id})}">
+                    <a th:href="${remove}"><span class ="glyphicon glyphicon-trash"></span></a>
+                </div>
+            </td>
+            </td>
         </tr>
     </table>
 </body>

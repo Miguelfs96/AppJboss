@@ -23,4 +23,14 @@ public class MemberServiceImpl implements MemberService {
     public ArrayList mostrar() {
         return new ArrayList<>(memberDao.findAll());
     }
+
+    @Override
+    public void remove(long id) {
+        memberDao.deleteById(id);
+    }
+
+    @Override
+    public Member edit(long id) {
+        return null;
+    }
 }

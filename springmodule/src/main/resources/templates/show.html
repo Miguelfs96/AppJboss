@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<!--suppress HtmlDeprecatedAttribute, CheckEmptyScriptTag -->
+
+<!--suppress ThymeleafVariablesResolveInspection -->
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml" lang="es">
 <head>
     <meta charset="UTF-8">
@@ -16,18 +17,22 @@
             <th>Nombre</th>
             <th>Numero</th>
         </tr>
+
         <tr th:each = "m : ${members}">
-            <td th:text="${m.id}"/>
-            <td th:text="${m.email}"/>
-            <td th:text="${m.name}"/>
-            <td th:text="${m.number}"/>
+            <td th:text="${m.id}"></td>
+            <td th:text="${m.email}"></td>
+            <td th:text="${m.name}"></td>
+            <td th:text="${m.number}"></td>
             <td>
-                <div th:with="remove=@{/remove(id=${m.id})}">
-                    <a th:href="${remove}"><span class ="glyphicon glyphicon-trash"></span></a>
+                <div th:with="edit=@{/edit(id=${m.id})}">
+                    <a th:href="${edit}"><span class ="glyphicon glyphicon-edit"></span></a>
                 </div>
-            </td>
             </td>
         </tr>
     </table>
+    <br/><br/>
+    <form action="#" th:action="@{/add}">
+        <button type="submit"><span class="glyphicon glyphicon-plus-sign"></span></button>
+    </form>
 </body>
 </html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+</head>
+<body>
+<form action = "#" th:action="@{/editordelete}" method="post">
+
+    <label>ID: <input type="text" th:field="*{member.id}" readonly="readonly"/> </label><br/>
+    <label>Email: <input type="text" th:field="*{member.email}"/> </label><br/>
+    <label>Nombre: <input type="text" th:field="*{member.name}"/> </label><br/>
+    <label>Numero: <input type="text" th:field="*{member.number}"/> </label><br/>
+
+    <label><input type="checkbox" th:field="*{member.accion}" value="delete"/>BORRAR</label>
+    <br/><br/>
+
+    <button type="submit"><span class="glyphicon glyphicon-save"></span> </button>
+</form>
+</body>
+</html>

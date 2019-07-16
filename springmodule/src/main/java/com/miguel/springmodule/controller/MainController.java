@@ -2,7 +2,7 @@ package com.miguel.springmodule.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.miguel.springmodule.model.Member;
-import com.miguel.springmodule.repository.MemberDao;
+import com.miguel.springmodule.repository.dto.GeneralDto;
 import com.miguel.springmodule.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
@@ -37,19 +37,26 @@ public class MainController {
     @RequestMapping(value= "/add")
     public ModelAndView save (){
         ModelAndView mav = new ModelAndView("add");
-        mav.addObject("member", new Member());
+        mav.addObject("member", new GeneralDto());
         return mav;
     }
 
-    @RequestMapping(value = "/remove")                                      //No en cola
-    public ModelAndView remove(@RequestParam("id") long id){
-        memberService.remove(id);
-        ModelAndView mav= new ModelAndView("show");
-        mav.addObject("members", memberService.mostrar());
+    @RequestMapping (value= "/edit")
+    public ModelAndView edit(@RequestParam("id")long id){
+        ModelAndView mav = new ModelAndView("edit");
+        mav.addObject("member", memberService.edit(id));
         return mav;
     }
 
-    @RequestMapping(value = "publish")
+    @RequestMapping(value = "/editordelete")
+    public ModelAndView edit(@ModelAttribute("member") GeneralDto member) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        String members = objectMapper.writeValueAsString(member);
+        jmsTemplate.convertAndSend(queue, members);
+        return new ModelAndView("end");
+    }
+
+    @RequestMapping(value = "/publish")
     public ModelAndView publish (@ModelAttribute("member")Member member) throws IOException{
         ObjectMapper objectMapper = new ObjectMapper();
         String members = objectMapper.writeValueAsString(member);

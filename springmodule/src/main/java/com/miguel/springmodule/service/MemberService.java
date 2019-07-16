@@ -1,6 +1,7 @@
 package com.miguel.springmodule.service;
 
 import com.miguel.springmodule.model.Member;
+import com.miguel.springmodule.repository.dto.GeneralDto;
 
 import java.util.ArrayList;
 
@@ -12,6 +13,6 @@ public interface MemberService {
 
     void remove (long id);
 
-    Member edit (long id);
+    GeneralDto edit (long id);
 
 }

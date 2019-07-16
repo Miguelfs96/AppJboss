@@ -20,7 +20,12 @@ public class Consumer {
 
     @JmsListener(destination = "member-queue")
     public void listener(String member) throws IOException{
+        System.out.println(member);
         Member memb = objectMapper.readValue(member, Member.class);
-        memberService.save(memb);
+        if (member.contains("\"accion\":\"delete\"")){
+            memberService.remove(memb.getId());
+        }else{
+            memberService.save(memb);
+        }
     }
 }

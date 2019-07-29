@@ -6,8 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="EarJboss" />
         <module name="springmodule" />
+        <module name="EarJboss" />
+        <module name="earjboss" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
